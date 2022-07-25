@@ -10,13 +10,6 @@ interface home{
   isBollywood: string
 }
 
-interface detail{
-  id:number,
-  name:string,
-  details:string,
-  runtime:number,
-  director:string
-}
 
 @Component({
   selector: 'app-home',
@@ -28,15 +21,16 @@ export class HomeComponent implements OnInit {
   @ViewChild('draggable')
   private draggableElement!: ElementRef;
   display=false
+  movieName=""
 
   constructor(private http:HttpClient){}
 
   url = ["http://localhost:8080/weekly-top-movies","http://localhost:8080/weekly-top-bollywood-movies"]
-  detailsUrl=""
+
 
   top: home[]=[]
   bollywood: home[]=[]
-  detials: detail[]=[]
+  
 
 
   weeklyTop = [
@@ -124,10 +118,7 @@ export class HomeComponent implements OnInit {
   hide(name:string){
     this.draggableElement.nativeElement.remove();
     this.display=true
-    this.detailsUrl="http://localhost:8080/get-movie-detail/"+name
-    this.http.get<home[]>(this.detailsUrl,{responseType:"json"}).subscribe((res) =>{
-      this.bollywood=res;
-    })
+    this.movieName=name
   }
   
 

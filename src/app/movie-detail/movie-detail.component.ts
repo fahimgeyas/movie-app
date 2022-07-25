@@ -1,4 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, Input, OnInit } from '@angular/core';
+
+interface detail{
+  id:number,
+  movieName:string,
+  movieDescription:string,
+  runtime:number,
+  directors:string,
+  posterlink:string,
+  rating:number
+}
 
 @Component({
   selector: 'app-movie-detail',
@@ -7,9 +18,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MovieDetailComponent implements OnInit {
 
-  constructor() { }
+  @Input() movieName=""
+
+  detailsUrl=""
+
+  details: detail[]=[]
+
+  constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
+    this.detailsUrl="http://localhost:8080/movie-details/"+this.movieName+"/"
+    this.http.get<detail[]>(this.detailsUrl,{responseType:"json"}).subscribe((res) =>{
+      this.details=res;
+    })
   }
 
 }

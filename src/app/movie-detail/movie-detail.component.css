@@ -1,5 +1,52 @@
 .title{
     margin-left: 25px;
     margin-top: 35px;
-    color: whitesmoke;
+    color: white;
+}
+
+.detail-div{
+    margin-left: 20px;
+}
+
+.detail-div .poster{
+    padding-right: 0;
+}
+
+.detail-div img{
+    border-radius: 5px;
+}
+
+.detail-div p{
+    color: darkgray;
+    line-height: 2;
+    padding-right: 30px;
+}
+
+
+.rating p{
+    margin-top: -10px;
+    font-size: 2em;
+}
+
+.rating svg{
+    margin-top: -5px;
+}
+
+.description{
+    height: 160px;
+    overflow-y: hidden;
+}
+
+.description-div span{
+    font-size: 1.5em;
+    color: white;
+}
+
+.directors p{
+    margin-top: -15px;
+}
+
+.runtime p{
+    margin-top: 10px;
+    margin-bottom: 0;
 }
